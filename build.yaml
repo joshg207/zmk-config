@@ -7,17 +7,17 @@
 # Brief: configuration file for ZMK firmware
 # Board: nice_nano_v2 and puchi_ble_v1
 # shield: corne_left nice_view_adapter nice_view,
-###    ##     corne_right nice_view_adapter nice_view,
-###    ##     corne_left, corne_right and settings_reset
+#         corne_right nice_view_adapter nice_view,
+#         corne_left, corne_right and settings_reset
 # =========================================
-###    ##    ##    ##    ##    ##    ##      ╔═╦═╦═╗
-###    ##    ##    ##    ##       ╔════╗ ║║║║║╔╝
-###    ##    ##    ##    ##       ║╔╗╔╗║ ║║║║║╚╗
-###    ##    ##    ##    ##       ╚╝║║╚╝ ║╠═╩╩═╝
-###    ##    ##    ##    ##    ##     ║╠═╦═╣╚╦═╦╦═╦╗╔═╦═╦╦╗
-###    ##    ##    ##    ##    ##     ║║╩╣═╣║║║║║╬║╚╣╬║╬║║║
-###    ##    ##    ##    ##    ##     ╚╩═╩═╩╩╩╩═╩═╩═╩═╬╗╠╗║
-###    ##    ##    ##    ##    ##    ##    ##    ##    ##     ╚═╩═╝
+#                              ╔═╦═╦═╗
+#                       ╔════╗ ║║║║║╔╝
+#                       ║╔╗╔╗║ ║║║║║╚╗
+#                       ╚╝║║╚╝ ║╠═╩╩═╝
+#                         ║╠═╦═╣╚╦═╦╦═╦╗╔═╦═╦╦╗
+#                         ║║╩╣═╣║║║║║╬║╚╣╬║╬║║║
+#                         ╚╩═╩═╩╩╩╩═╩═╩═╩═╬╗╠╗║
+#                                         ╚═╩═╝
 # This file generates the GitHub Actions matrix
 # For simple board + shield combinations, add them
 # to the top level board and shield arrays, for more
@@ -27,14 +27,14 @@
 # board: [ "nice_nano_v2" ]
 # shield: [ "corne_left", "corne_right" ]
 # include:
-# ##  - board: bdn9_rev2
-# ##  - board: nice_nano_v2
-###     shield: reviung41
+#   - board: bdn9_rev2
+#   - board: nice_nano_v2
+#     shield: reviung41
 #
 # Split Keyboard Halves Unable to Pair
-###     https://zmk.dev/docs/troubleshooting
-# ##  - board: nice_nano_v2
-###     shield: settings_reset
+#     https://zmk.dev/docs/troubleshooting
+#   - board: nice_nano_v2
+#     shield: settings_reset
 # Reset Split Keyboard Procedure
 # Perform the following steps to reset both halves of your split keyboard:
 # - Put each half of the split keyboard into bootloader mode.
