@@ -41,16 +41,16 @@ layers:
   - )
   - '~'
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - EP ON
+  - EP OFF
+  - EP TOG
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - '-'
-  - KP PLUS
+  - +
   - '{'
   - '}'
   - '|'
