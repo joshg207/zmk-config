@@ -833,9 +833,8 @@ stroke-width: 2;
 <g transform="translate(196, 84)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.0em">Mouse</tspan><tspan x="0" dy="1.2em">↑</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 67%">&amp;mmv_slow</tspan><tspan x="0" dy="1.2em" style="font-size: 67%">MOVE_UP</tspan>
 </text>
-<text x="0" y="-24" class="key shifted"><tspan style="font-size: 60%">&amp;mmv_slow…</tspan></text>
 </g>
 <g transform="translate(252, 91)" class="key keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -881,23 +880,20 @@ stroke-width: 2;
 <g transform="translate(140, 147)" class="key keypos-26">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.0em">Mouse</tspan><tspan x="0" dy="1.2em">←</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 67%">&amp;mmv_slow</tspan><tspan x="0" dy="1.2em" style="font-size: 67%">MOVE_LEFT</tspan>
 </text>
-<text x="0" y="-24" class="key shifted"><tspan style="font-size: 60%">&amp;mmv_slow…</tspan></text>
 </g>
 <g transform="translate(196, 140)" class="key keypos-27">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.0em">Mouse</tspan><tspan x="0" dy="1.2em">↓</tspan>
+<tspan x="0" dy="-0.6em" style="font-size: 67%">&amp;mmv_slow</tspan><tspan x="0" dy="1.2em" style="font-size: 67%">MOVE_DOWN</tspan>
 </text>
-<text x="0" y="-24" class="key shifted"><tspan style="font-size: 60%">&amp;mmv_slow…</tspan></text>
 </g>
 <g transform="translate(252, 147)" class="key keypos-28">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.0em">Mouse</tspan><tspan x="0" dy="1.2em">→</tspan>
+<tspan x="0" dy="-1.2em" style="font-size: 67%">&amp;mmv_slow</tspan><tspan x="0" dy="1.2em" style="font-size: 67%">MOVE</tspan><tspan x="0" dy="1.2em" style="font-size: 67%">RIGHT</tspan>
 </text>
-<text x="0" y="-24" class="key shifted"><tspan style="font-size: 60%">&amp;mmv_slow…</tspan></text>
 </g>
 <g transform="translate(308, 154)" class="key trans keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
