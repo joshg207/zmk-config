@@ -121,7 +121,7 @@
             tapping-term-ms = <200>;
             bindings = <&kp LSHIFT>, <&kp CLCK>;
         };
-        
+
         mmv_slow: mouse_move_slow {
             compatible = "zmk,behavior-mouse-move";
             #binding-cells = <1>;
@@ -158,8 +158,6 @@
             mods = <(MOD_LCTL)>;
         };
     };
-};
-    
 
     keymap {
         compatible = "zmk,keymap";
