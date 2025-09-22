@@ -154,7 +154,6 @@
       bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(900)>;
     };
   };
-};
 
     keymap {
         compatible = "zmk,keymap";

@@ -75,7 +75,7 @@ layers:
   - {t: '`', s: '~'}
   - '!'
   - '@'
-  - {t: Mouse ↑, s: '&mmv_slow MOVE_UP'}
+  - {t: Mouse ↑, s: '&mmv MOVE_Y(-900)'}
   - $
   - '%'
   - ^
@@ -86,9 +86,9 @@ layers:
   - {t: '=', s: +}
   - $$mdi:apple-keyboard-control$$
   - $$tabler:pointer-pin$$
-  - {t: Mouse ←, s: '&mmv_slow MOVE_LEFT'}
-  - {t: Mouse ↓, s: '&mmv_slow MOVE_DOWN'}
-  - {t: Mouse →, s: '&mmv_slow MOVE_RIGHT'}
+  - {t: Mouse ←, s: '&mmv MOVE_X(-900)'}
+  - {t: Mouse ↓, s: '&mmv MOVE_Y(900)'}
+  - {t: Mouse →, s: '&mmv MOVE_X(900)'}
   - {t: ▽, type: trans}
   - +
   - $$mdi:mouse-left-click$$
