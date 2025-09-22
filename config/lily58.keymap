@@ -23,6 +23,7 @@
                 , <&macro_release &kp LGUI>
                 ;
         };
+
         ctrl_prtsc: ctrl_prtsc {
             label = "CTRL_PRSC";
             compatible = "zmk,behavior-macro";
@@ -114,6 +115,7 @@
         };
     };
 
+
     behaviors {
         td_shift: tap_dance_shift {
             compatible = "zmk,behavior-tap-dance";
@@ -162,7 +164,6 @@
     keymap {
         compatible = "zmk,keymap";
 
-        desfault_layer {
         desfault_layer {
             display-name="Default";
 // ------------------------------------------------------------------------------------------------------------
