@@ -125,47 +125,35 @@
         tapping-term-ms = <200>;
         bindings = <&kp LSHIFT>, <&kp CLCK>;
     };
-
-      mmv_slow: mmv_slow {
-        compatible = "zmk,behavior-pointer-move";
-        label = "MMV_SLOW";
-        #binding-cells = <1>;
-        acceleration-exponent = <0>;
-        time-to-max-speed-ms = <1000>;
-        acceleration-exponent = <2>;
+    /* Hold LCTRL for the slower variant */
+    sniper_up: sniper_up {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(-900)>;
     };
 
-      sniper_up: sniper_up {
-        compatible = "zmk,behavior-mod-morph";
-        label = "SNIPER_UP";
-        #binding-cells = <0>;
-        bindings = <&mmv MOVE_UP>, <&mmv_slow MOVE_UP>;
-        mods = <(MOD_LCTL)>;
+    sniper_down: sniper_down {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_Y(900)>;
     };
 
-      sniper_down: sniper_down {
-        compatible = "zmk,behavior-mod-morph";
-        label = "SNIPER_DOWN";
-        #binding-cells = <0>;
-        bindings = <&mmv MOVE_DOWN>, <&mmv_slow MOVE_DOWN>;
-        mods = <(MOD_LCTL)>;
+    sniper_left: sniper_left {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_X(-900)>;
     };
 
-      sniper_left: sniper_left {
-        compatible = "zmk,behavior-mod-morph";
-        label = "SNIPER_LEFT";
-        #binding-cells = <0>;
-        bindings = <&mmv MOVE_LEFT>, <&mmv_slow MOVE_LEFT>;
-        mods = <(MOD_LCTL)>;
+    sniper_right: sniper_right {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(900)>;
     };
-
-      sniper_right: sniper_right {
-        compatible = "zmk,behavior-mod-morph";
-        label = "SNIPER_RIGHT";
-        #binding-cells = <0>;
-        bindings = <&mmv MOVE_RIGHT>, <&mmv_slow MOVE_RIGHT>;
-        mods = <(MOD_LCTL)>;
-    };
+  };
 };
 
     keymap {
