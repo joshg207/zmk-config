@@ -75,7 +75,7 @@ layers:
   - {t: '`', s: '~'}
   - '!'
   - '@'
-  - Mouse ↑
+  - '&mmv sniper_up'
   - $
   - '%'
   - ^
@@ -86,9 +86,9 @@ layers:
   - {t: '=', s: +}
   - {t: ▽, type: trans}
   - $$tabler:pointer-pin$$
-  - Mouse ←
-  - Mouse ↓
-  - Mouse →
+  - '&mmv sniper_left'
+  - '&mmv sniper_down'
+  - '&mmv sniper_right'
   - {t: ▽, type: trans}
   - +
   - $$mdi:mouse-left-click$$
