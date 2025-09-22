@@ -13,107 +13,106 @@
 
 / {
     macros {
-    win_c: win_c {
-        label = "WIN_C";
+        win_c: win_c {
+            label = "WIN_C";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LGUI>
+                ;
+        };
+        ctrl_prtsc: ctrl_prtsc {
+            label = "CTRL_PRSC";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp PRINTSCREEN>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+        csc: csc {
+        label = "CSC";
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
         bindings
-            = <&macro_press &kp LGUI>
+            = <&macro_press &kp LCTRL &kp LSHIFT>
             , <&macro_tap &kp C>
-            , <&macro_release &kp LGUI>
+            , <&macro_release &kp LSHIFT &kp LCTRL>
             ;
-    };
-    ctrl_prtsc: ctrl_prtsc {
-        label = "CTRL_PRSC";
+        };
+
+        csv: csv {
+        label = "CSV";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHIFT>
+            , <&macro_tap &kp V>
+            , <&macro_release &kp LSHIFT &kp LCTRL>
+            ;
+        };
+        
+        mcopy: mcopy {
+        label = "mcopy";
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
         bindings
             = <&macro_press &kp LCTRL>
-            , <&macro_tap &kp PRINTSCREEN>
+            , <&macro_tap &kp C>
             , <&macro_release &kp LCTRL>
             ;
-    };
+        };
 
-    csc: csc {
-    label = "CSC";
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_press &kp LCTRL &kp LSHIFT>
-        , <&macro_tap &kp C>
-        , <&macro_release &kp LSHIFT &kp LCTRL>
-        ;
-    };
+        mpaste: mpaste {
+        label = "mpaste";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL>
+            , <&macro_tap &kp V>
+            , <&macro_release &kp LCTRL>
+            ;
+        };
 
-    csv: csv {
-    label = "CSV";
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_press &kp LCTRL &kp LSHIFT>
-        , <&macro_tap &kp V>
-        , <&macro_release &kp LSHIFT &kp LCTRL>
-        ;
-    };
-    
-    mcopy: mcopy {
-    label = "mcopy";
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_press &kp LCTRL>
-        , <&macro_tap &kp C>
-        , <&macro_release &kp LCTRL>
-        ;
-    };
+        undo: undo {
+        label = "undo";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL>
+            , <&macro_tap &kp Z>
+            , <&macro_release &kp LCTRL>
+            ;
+        };
 
-    mpaste: mpaste {
-    label = "mpaste";
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_press &kp LCTRL>
-        , <&macro_tap &kp V>
-        , <&macro_release &kp LCTRL>
-        ;
-    };
+        redo: redo {
+        label = "redo";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL>
+            , <&macro_tap &kp Y>
+            , <&macro_release &kp LCTRL>
+            ;
+        };
 
-    undo: undo {
-    label = "undo";
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_press &kp LCTRL>
-        , <&macro_tap &kp Z>
-        , <&macro_release &kp LCTRL>
-        ;
+        ptrun: ptrun {
+        label = "ptrun";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LWIN>
+            , <&macro_press &kp LALT>
+            , <&macro_tap &kp SPACE>
+            , <&macro_release &kp LWIN>
+            , <&macro_release &kp LALT>
+            ;
+        };
     };
-
-    redo: redo {
-    label = "redo";
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_press &kp LCTRL>
-        , <&macro_tap &kp Y>
-        , <&macro_release &kp LCTRL>
-        ;
-    };
-
-    ptrun: ptrun {
-    label = "ptrun";
-    compatible = "zmk,behavior-macro";
-    #binding-cells = <0>;
-    bindings
-        = <&macro_press &kp LWIN>
-        , <&macro_press &kp LALT>
-        , <&macro_tap &kp SPACE>
-        , <&macro_release &kp LWIN>
-        , <&macro_release &kp LALT>
-        ;
-    };
-
-};
 
     behaviors {
         td_shift: tap_dance_shift {
@@ -122,7 +121,7 @@
             tapping-term-ms = <200>;
             bindings = <&kp LSHIFT>, <&kp CLCK>;
         };
-        // Slow mouse movement for sniper mode
+        
         mmv_slow: mouse_move_slow {
             compatible = "zmk,behavior-mouse-move";
             #binding-cells = <1>;
@@ -130,6 +129,7 @@
             time-to-max-speed-ms = <1000>;
             delay-ms = <0>;
         };
+
         sniper_up: sniper_up {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
