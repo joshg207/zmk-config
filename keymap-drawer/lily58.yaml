@@ -84,7 +84,7 @@ layers:
   - (
   - )
   - {t: '=', s: +}
-  - {t: ▽, type: trans}
+  - $$mdi:apple-keyboard-control$$
   - $$tabler:pointer-pin$$
   - {t: Mouse ←, s: '&mmv_slow MOVE_LEFT'}
   - {t: Mouse ↓, s: '&mmv_slow MOVE_DOWN'}
