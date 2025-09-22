@@ -199,11 +199,11 @@
 // | SHIFT |     |     |  #   |  INS |      |  mo 3  |  |       |  _   |       |  "[{" | "]}" | scrld | SHIFT |
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | DEL   |
             bindings = <
-&kp F1     &kp F2    &kp F3            &kp F4            &kp F5             &kp F6                         &kp F7    &kp F8    &kp F9    &kp F10   &kp F11        &kp F12
-&kp GRAVE  &kp EXCL  &kp AT            &mmv_slow MOVE_UP        &kp DOLLAR         &kp PRCNT                      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR       &kp EQUAL
-&kp LCTRL  &win_c    &mmv_slow MOVE_LEFT      &mmv_slow MOVE_DOWN      &mmv_slow MOVE RIGHT      &trans                         &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3  &msc SCRL_UP   &kp BSLH
-&trans     &trans    &trans            &kp HASH          &kp INS            &trans     &mo 3     &trans    &kp MINUS &trans    &kp LBKT  &kp RBKT  &msc SCRL_DOWN &trans
-                                       &trans            &trans             &trans     &trans    &trans    &trans    &trans    &trans
+&kp F1     &kp F2    &kp F3              &kp F4              &kp F5               &kp F6                         &kp F7    &kp F8    &kp F9    &kp F10   &kp F11        &kp F12
+&kp GRAVE  &kp EXCL  &kp AT              &mmv_slow MOVE_UP   &kp DOLLAR           &kp PRCNT                      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR       &kp EQUAL
+&kp LCTRL  &win_c    &mmv_slow MOVE_LEFT &mmv_slow MOVE_DOWN &mmv_slow MOVE_RIGHT &trans                         &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3  &msc SCRL_UP   &kp BSLH
+&trans     &trans    &trans              &kp HASH            &kp INS              &trans     &mo 3     &trans    &kp MINUS &trans    &kp LBKT  &kp RBKT  &msc SCRL_DOWN &trans
+                                         &trans              &trans               &trans     &trans    &trans    &trans    &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
