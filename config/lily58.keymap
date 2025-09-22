@@ -158,43 +158,7 @@
             mods = <(MOD_LCTL)>;
         };
     };
-    
-        // Slow mouse movement for sniper mode
-        mmv_slow: mouse_move_slow {
-            compatible = "zmk,behavior-mouse-move";
-            #binding-cells = <1>;
-            acceleration-exponent = <0>;
-            time-to-max-speed-ms = <1000>;
-            delay-ms = <0>;
-        };
-        sniper_up: sniper_up {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_UP>, <&mmv_slow MOVE_UP>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        sniper_down: sniper_down {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_DOWN>, <&mmv_slow MOVE_DOWN>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        sniper_left: sniper_left {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_LEFT>, <&mmv_slow MOVE_LEFT>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        sniper_right: sniper_right {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_RIGHT>, <&mmv_slow MOVE_RIGHT>;
-            mods = <(MOD_LCTL)>;
-        };
-    };
+};
     
 
     keymap {
