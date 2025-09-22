@@ -122,12 +122,48 @@
             tapping-term-ms = <200>;
             bindings = <&kp LSHIFT>, <&kp CLCK>;
         };
+        // Slow mouse movement for sniper mode
+        mmv_slow: mouse_move_slow {
+            compatible = "zmk,behavior-mouse-move";
+            #binding-cells = <1>;
+            acceleration-exponent = <0>;
+            time-to-max-speed-ms = <1000>;
+            delay-ms = <0>;
+        };
+        sniper_up: sniper_up {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_UP>, <&mmv_slow MOVE_UP>;
+            mods = <(MOD_LCTL)>;
+        };
+
+        sniper_down: sniper_down {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_DOWN>, <&mmv_slow MOVE_DOWN>;
+            mods = <(MOD_LCTL)>;
+        };
+
+        sniper_left: sniper_left {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_LEFT>, <&mmv_slow MOVE_LEFT>;
+            mods = <(MOD_LCTL)>;
+        };
+
+        sniper_right: sniper_right {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_RIGHT>, <&mmv_slow MOVE_RIGHT>;
+            mods = <(MOD_LCTL)>;
+        };
     };
+    
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        desfault_layer {
             display-name="Default";
 // ------------------------------------------------------------------------------------------------------------
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
@@ -155,10 +191,10 @@
 // | SHIFT |     |     |  #   |  INS |      |  mo 3  |  |       |  _   |       |  "[{" | "]}" | scrld | SHIFT |
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | DEL   |
             bindings = <
-&kp F1     &kp F2    &kp F3          &kp F4          &kp F5           &kp F6                         &kp F7    &kp F8    &kp F9    &kp F10   &kp F11        &kp F12
-&kp GRAVE  &kp EXCL  &kp AT          &mmv MOVE_UP    &kp DOLLAR       &kp PRCNT                      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR       &kp EQUAL
-&trans     &win_c    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans                         &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3  &msc SCRL_UP   &kp BSLH
-&trans     &trans    &trans          &kp HASH        &kp INS          &trans     &mo 3     &trans    &kp MINUS &trans    &kp LBKT  &kp RBKT  &msc SCRL_DOWN &trans
+&kp F1     &kp F2    &kp F3            &kp F4            &kp F5             &kp F6                         &kp F7    &kp F8    &kp F9    &kp F10   &kp F11        &kp F12
+&kp GRAVE  &kp EXCL  &kp AT            &mmv sniper_up    &kp DOLLAR         &kp PRCNT                      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR       &kp EQUAL
+&trans     &win_c    &mmv sniper_left  &mmv sniper_down  &mmv sniper_right  &trans                         &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3  &msc SCRL_UP   &kp BSLH
+&trans     &trans    &trans            &kp HASH          &kp INS            &trans     &mo 3     &trans    &kp MINUS &trans    &kp LBKT  &kp RBKT  &msc SCRL_DOWN &trans
                                      &trans          &trans           &trans     &trans    &trans    &trans    &trans    &trans
             >;
 
