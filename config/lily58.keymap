@@ -155,7 +155,7 @@
     };
   };
 
-    keymap {
+    keymap {$
         compatible = "zmk,keymap";
 
         desfault_layer {
@@ -188,7 +188,7 @@
             bindings = <
 &kp F1     &kp F2    &kp F3              &kp F4              &kp F5               &kp F6                         &kp F7    &kp F8    &kp F9    &kp F10   &kp F11        &kp F12
 &kp GRAVE  &kp EXCL  &kp AT              &sniper_up          &kp DOLLAR           &kp PRCNT                      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR       &kp EQUAL
-&kp LCTRL  &win_c    &sniper_left        &sniper_down        &sniper_right      &trans                         &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3  &msc SCRL_UP   &kp BSLH
+&kp LCTRL  &win_c    &sniper_left        &sniper_down        &sniper_right        &trans                         &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3  &msc SCRL_UP   &kp BSLH
 &trans     &trans    &trans              &kp HASH            &kp INS              &trans     &mo 3     &trans    &kp MINUS &trans    &kp LBKT  &kp RBKT  &msc SCRL_DOWN &trans
                                          &trans              &trans               &trans     &trans    &trans    &trans    &trans    &trans
             >;
@@ -205,7 +205,7 @@
 // | SHIFT |     |     |      |      |      |        |  |  mo 4 |      |       |   =   |      | pg_dn | SHIFT |
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | DEL   |
             bindings = <
-&kp C_MUTE &kp C_VOL_DN  &kp C_VOL_UP &trans         &trans      &trans                        &trans      &trans    &trans    &trans     &trans     &trans
+&kp C_MUTE &kp C_VOL_DN  &kp C_VOL_UP &trans       &trans      &trans                        &kp F13     &kp F14   &kp F15   &kp F16    &kp F17    &kp F18
 &kp GRAVE  &trans        &undo        &ctrl_prtsc  &mcopy      &csc                          &trans      &kp HOME  &kp UP    &kp END    &trans     &trans
 &trans     &trans        &redo        &trans       &mpaste     &csv                          &trans      &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_UP  &kp BSLH
 &trans     &trans        &trans       &trans       &trans      &trans    &trans   &mo 4      &trans      &trans    &trans    &trans     &kp PG_DN  &trans
