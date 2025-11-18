@@ -155,7 +155,7 @@
     };
   };
 
-    keymap {$
+    keymap {
         compatible = "zmk,keymap";
 
         desfault_layer {

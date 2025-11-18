@@ -125,12 +125,12 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - F13
+  - F14
+  - F15
+  - F16
+  - F17
+  - F18
   - {t: '`', s: '~'}
   - {t: ▽, type: trans}
   - $$tabler:arrow-back$$
