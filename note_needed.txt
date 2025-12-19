@@ -1,0 +1,126 @@
+Repository directory tree (annotated)
+
+Top level:
+- .github/                                [KEEP] CI workflows for builds and keymap-drawer
+  - workflows/build.yml                   [KEEP]
+  - workflows/keymap-drawer.yaml         [KEEP]
+- boards/                                 [KEEP] Board overlays and shield configs used to build firmware
+  - *.overlay                             [KEEP] Zephyr devicetree overlays for various boards
+  - shields/                              [KEEP] Shield-specific configs (corne, lily58, etc.)
+    - corne/                              [KEEP]
+      - corne.keymap                      [KEEP] Shield-specific keymap
+      - corne.conf                        [KEEP]
+      - *.overlay / *.dtsi / Kconfig.*    [KEEP]
+    - lily58/                             [KEEP]
+      Repository directory tree (annotated)
+
+      Top level (summary)
+      - .github/                                [KEEP] CI workflows for builds and keymap-drawer
+        - workflows/build.yml                   [KEEP]
+        - workflows/keymap-drawer.yaml         [KEEP]
+      - boards/                                 [REVIEW - detailed below] All board overlays and shield subtrees — reviewed in detail
+      - build.yaml                              [KEEP] CI/build configuration
+      - README.md                               [KEEP] Documentation
+      - config/                                 [KEEP] Primary user-facing configs and keymaps
+      - keymap-drawer/                          [KEEP/GEN] Contains generated visuals and YAMLs; some files are generated
+      - snippets/                               [KEEP] Reusable configuration snippets (useful)
+      - zephyr/                                 [KEEP] module metadata; contains local DTS binding shims we added
+      - ORIG/                                   [ARCHIVE] historical backups - safe to archive or remove
+
+      Detailed `boards/` tree and notes
+      boards/
+        nrfmicro_11.overlay                     [KEEP if used] - board overlay for NRF micro v1
+        nrfmicro_11_flipped.overlay             [KEEP if used] - alternate flipped wiring
+        nrfmicro_13.overlay                     [KEEP if used]
+        nice_nano.overlay                       [KEEP] commonly used board overlay for Corne/nice_nano
+        nice_nano_v2.overlay                    [KEEP] newer nice_nano variant
+        puchi_ble_v1.overlay                    [KEEP] used for puchi-based boards
+        seeeduino_xiao_ble.overlay              [KEEP] dongle board overlay
+
+        Notes: the top-level overlays are small per-board devicetree fragments. Keep overlays for boards you target in CI
+        or actually flash. If you never build for a given overlay, move it to `archive/boards/` or document for removal.
+
+        shields/
+          corne/
+            corne.keymap                         [KEEP] Shield-level keymap for Corne — important
+            corne.conf                           [KEEP]
+            corne.dtsi                           [KEEP] Shield devicetree definitions
+            corne.zmk.yml                        [KEEP] metadata for ZMK Studio/CI
+            corne_left.overlay                   [KEEP if building left half]
+            corne_left_peripheral.overlay        [KEEP if peripheral variant used]
+            corne_right.overlay                  [KEEP if building right half]
+            corne_right_peripheral.overlay       [KEEP if peripheral variant used]
+            corne_dongle_xiao.overlay            [KEEP if building dongle image]
+            corne_dongle_pro_micro.overlay       [KEEP if building dongle image]
+            Kconfig.defconfig                     [KEEP] shield-specific Kconfig
+            Kconfig.shield                        [KEEP]
+
+            boards/
+              nice_nano.overlay                  [KEEP] overlay examples per shield
+              nice_nano_v2.overlay               [KEEP]
+
+            Notes: The `corne` shield directory holds all the per-shield and per-variant overlays. Keep them; they are used by
+            CI build targets (check `build.yaml`/`corne.zmk.yml`). If you only ever build a subset (e.g., only `nice_nano_v2`), consider
+            archiving the others.
+
+          lily58/
+            lily58.keymap                        [KEEP] Shield keymap for Lily58
+            lily58.conf                          [KEEP]
+            lily58.dtsi                          [KEEP]
+            lily58.zmk.yml                       [KEEP]
+            lily58_left.overlay                  [KEEP if used]
+            lily58_right.overlay                 [KEEP if used]
+            lily58_dongle_xiao.overlay           [KEEP if used]
+            lily58_dongle_pro_micro.overlay      [KEEP if used]
+            lily58_left_peripheral.overlay       [KEEP if used]
+            lily58_right_peripheral.overlay      [KEEP if used]
+            Kconfig.defconfig                     [KEEP]
+            Kconfig.shield                        [KEEP]
+
+            boards/
+              nice_nano.overlay                  [KEEP]
+              nice_nano_v2.overlay               [KEEP]
+
+            Notes: Same as Corne — keep shield overlays used by your builds; archive unused variants.
+
+        Other top-level board overlays (duplicates of shield boards or standalone boards):
+        - seeeduino_xiao_ble.overlay            [KEEP if dongle target]
+        - puchi_ble_v1.overlay                  [KEEP if using puchi hardware]
+        - nice_nano*.overlay                    [KEEP]
+        - nrfmicro_*.overlay                   [KEEP/VERIFY] keep if you build for these specific MCUs
+
+      What to archive/remove in `boards/`
+      - Archive candidate: any overlay you never build (check `build.yaml` and `boards/shields/*/*.zmk.yml` for CI targets)
+      - Remove: OS artifacts like `.DS_Store.gz` under `boards/` (safe to delete)
+      - Keep: shield directories (`corne`, `lily58`) because they define shields and keymaps used by this repo
+
+      Why this matters
+      - Overlays are lightweight, but having many unused overlays makes maintenance harder and confuses tooling. Keep the overlays
+        you use frequently and archive the rest.
+
+      Local DTS binding shims (we added these during the session)
+      - zephyr/dts/bindings/zmk,behavior-sticky-layer.yaml   [LOCAL SHIM] keep until upstream/dts in ZMK provides official binding
+      - zephyr/dts/bindings/zmk,behavior-one-shot.yaml       [LOCAL SHIM] keep until upstream provides binding
+
+      ORIG/ (historical)
+      - ORIG/Makefile.ORIG, ORIG/build.ORIG, ORIG/config/*, ORIG/keymap-drawer/*
+        [ARCHIVE] These are backups of earlier versions. They are safe to remove from main but keep in an `archive/` branch if you
+        want to retain them for posterity.
+
+      Practical next actions I recommend (short list)
+      1. Run `build.yaml`/CI target analysis to list boards that CI actually builds. Archive overlays for boards not in that list.
+      2. Remove `boards/.DS_Store.gz` from repo and add `.DS_Store*` to `.gitignore`.
+      3. Keep shield directories intact (`boards/shields/corne`, `boards/shields/lily58`). They contain the important per-shield keymaps and
+         Kconfig files required by the build.
+      4. If you want, I can create an `archive/boards/` directory, move unused overlays there, and update `.gitignore` and this note.
+
+      Files I changed during our session (verify these are intentional):
+      - config/corne.keymap                      [MODIFIED]
+      - zephyr/dts/bindings/zmk,behavior-sticky-layer.yaml [ADDED]
+      - zephyr/dts/bindings/zmk,behavior-one-shot.yaml     [ADDED]
+
+      If you'd like, I can now:
+      - perform the archive/move of unused overlays into `archive/boards/` and commit the changes, or
+      - run a quick scan of `build.yaml` to automatically mark which overlays are referenced by CI targets.
+
+      --- End of annotated boards-focused tree

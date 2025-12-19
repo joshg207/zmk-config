@@ -84,3 +84,6 @@ __pycache__
 # Rust
 target/
 **/*.rs.bk
+
+# keymap svgs
+keymap-drawer/*.svg

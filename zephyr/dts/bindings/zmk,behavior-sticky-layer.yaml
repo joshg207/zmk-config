@@ -1,0 +1,15 @@
+title: "ZMK behavior-sticky-layer binding"
+
+description: "Minimal binding for ZMK sticky-layer behavior to satisfy DTS parsing in this repo."
+
+properties:
+  layer:
+    description: "Layer index to toggle/stick"
+    type: integer
+  quick-release:
+    description: "If true, behave as quick-release sticky layer (deactivate after next key)"
+    type: boolean
+
+required: []
+
+additionalProperties: true

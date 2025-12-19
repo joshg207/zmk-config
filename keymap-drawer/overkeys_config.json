@@ -1,0 +1,71 @@
+{
+    "defaultUserLayout":"Default",
+    "altLayout":"Numpad",
+    "customFont":null,
+
+        "userLayouts": [
+        {
+            "name": "Default",
+            "keys": [
+                ["ESC", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "`"],
+                ["⭾", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "-"],
+                ["‹⎈", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'"],
+                ["‹⇧", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "⇧›"],
+                ["❖", "⌥", "LOWER", "⎵", "ENTER", "RAISE", "⌫", "⌦"]
+            ],
+            "trigger": "F13",
+            "type": "toggle"
+        },
+        {
+            "name": "Lower",
+            "keys": [
+                ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"],
+                ["`", "!", "@", "↑", "$", "%", "^", "&", "*", "(", ")", "="],
+                ["‹⎈", "win_c", "MMV ←", "↓", "→", "", "+", "LEFT  CLK", "RIGHT  CLK", "WHEEL  CLK", "SCRL  UP", "\\"],
+                ["‹⇧", "", "", "#", "INS", "", "_", "", "[", "]", "SCRL  DOWN", "⇧›"],
+                ["❖", "⌥", "LOWER", "⎵", "ENTER", "RAISE", "⌫", "⌦"]
+            ],
+            "trigger": "F14",
+            "type": "toggle"
+        },
+        {
+            "name": "Raise",
+            "keys": [
+                ["MUTE", "VOL_DN", "VOL_UP", "", "", "", "F13", "F14", "F15", "F16", "F17", "F18"],
+                ["`", "", "UNDO", "‹⎈_prtsc", "COPY", "C+S+C", "", "HOME", "↑", "END", "", ""],
+                ["‹⎈", "", "REDO", "", "PASTE", "C+S+V", "", "←", "↓", "→", "PG_UP", "\\"],
+                ["‹⇧", "", "", "", "", "", "", "", "", "", "PG_DN", "⇧›"],
+                ["❖", "⌥", "LOWER", "⎵", "ENTER", "RAISE", "⌫", "⌦"]
+            ],
+            "trigger": "F15",
+            "type": "toggle"
+        },
+        {
+            "name": "Numpad",
+            "keys": [
+                ["", "", "", "", "", "", "", "7", "8", "9", "/", ""],
+                ["`", "", "", "", "", "", "", "4", "5", "6", "*", ""],
+                ["‹⎈", "", "", "", "", "", "", "1", "2", "3", "+", ""],
+                ["‹⇧", "EP_ON", "EP_OFF", "EP_TOG", "", "", "", "", "", "0", ".", ".", "-", "⇧›"],
+                ["❖", "⌥", "LOWER", "⎵", "ENTER", "RAISE", "⌫", "⌦"]
+            ],
+            "trigger": "F16",
+            "type": "toggle"
+        },
+        {
+            "name": "Control",
+            "keys": [
+                ["&bt BT_CLR", "&bt BT_SEL 0", "&bt BT_SEL 1", "&bt BT_SEL 2", "&bt BT_SEL 3", "&bt BT_SEL 4", "", "", "", "", "", ""],
+                ["`", "", "", "", "", "F24", "", "", "", "", "", ""],
+                ["sys_reset", "", "", "", "", "F23", "", "", "", "", "", ""],
+                ["bootloader", "EP_ON", "EP_OFF", "EP_TOG", "", "", "", "", "", "", "", "", "", "bootloader"],
+                ["❖", "⌥", "LOWER", "⎵", "ENTER", "RAISE", "⌫", "⌦"]
+            ],
+            "trigger": "F17",
+            "type": "toggle"
+        }
+    ],
+    
+    "kanataHost":null,
+    "kanataPort":null
+}
