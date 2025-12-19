@@ -153,6 +153,21 @@
       mods = <MOD_LCTL>;
       bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(900)>;
     };
+    
+        /* Local sticky-layer for Control (used by td_mo2) */
+        sl_control: sl_control {
+                compatible = "zmk,behavior-sticky-layer";
+                #binding-cells = <0>;
+                layer = <4>;
+                release-after-ms = <3000>;
+        };
+
+        td_mo2: td_mo2 {
+                compatible = "zmk,behavior-tap-dance";
+                #binding-cells = <0>;
+                tapping-term-ms = <250>;
+                bindings = <&mo 2>, <&sl_control>;
+        };
   };
 
     keymap {
@@ -171,7 +186,7 @@
 &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                      &kp Y  &kp U    &kp I     &kp O   &kp P    &kp MINUS
 &kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                      &kp H  &kp J    &kp K     &kp L   &kp SEMI &kp SQT
 &td_shift &kp Z  &kp X  &kp C    &kp V    &kp B  &ptrun     &kp BSLH &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                        &kp LGUI &kp LALT &mo 1  &kp SPACE  &kp RET  &mo 2  &kp BSPC &kp DEL
+                        &kp LGUI &kp LALT &mo 1  &kp SPACE  &kp RET  &td_mo2  &kp BSPC &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
