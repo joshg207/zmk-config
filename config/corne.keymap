@@ -113,6 +113,11 @@
         };
     };
 
+    /* Configure default sticky-layer timeout: 3000 ms (3 seconds) */
+    &sl {
+        release-after-ms = <3000>;
+    };
+
     behaviors {
         compatible = "zmk,behaviors";
 
@@ -139,18 +144,12 @@
             bindings = <&kp MINUS>, <&bootloader>;
         };
 
-        /* Tap-dance for MO(2) key: hold -> MO(2); double-tap -> oneshot Control layer */
-        oneshot_control: oneshot_control {
-            compatible = "zmk,behavior-one-shot";
-            #binding-cells = <0>;
-            layer = <4>; /* control_layer index */
-        };
-
+        /* Tap-dance for MO(2) key: hold -> MO(2); double-tap -> sticky Control layer (use &sl) */
         td_mo2: td_mo2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <250>;
-            bindings = <&mo 2>, <&oneshot_control>;
+            bindings = <&mo 2>, <&sl 4>;
         };
     };
 
