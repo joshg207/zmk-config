@@ -119,8 +119,9 @@
         bspc_del: bspc_del {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            mods = <MOD_LSHIFT MOD_RSHIFT>;
             bindings = <&kp BSPC>, <&kp DEL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT)>;
         };
 
         /* Tap-dance bootloader activators: hold the top-outside key for 20s to enter bootloader */
