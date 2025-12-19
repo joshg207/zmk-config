@@ -123,4 +123,26 @@ Top level:
       - perform the archive/move of unused overlays into `archive/boards/` and commit the changes, or
       - run a quick scan of `build.yaml` to automatically mark which overlays are referenced by CI targets.
 
+      Files moved into `archive/` in this operation:
+      - archive/ORIG/Makefile.ORIG
+      - archive/ORIG/build.ORIG
+      - archive/ORIG/config/corne.keymap.ORIG
+      - archive/ORIG/config/lily58.keymap.ORIG
+      - archive/ORIG/config/keymap_german_mac_iso_zmk.h
+      - archive/ORIG/keymap-drawer/corne.svg
+      - archive/ORIG/keymap-drawer/corne.yaml
+      - archive/ORIG/keymap-drawer/lily58.svg
+      - archive/ORIG/keymap-drawer/lily58.yaml
+      - archive/ORIG/keymap-drawer/sofle.svg
+      - archive/ORIG/keymap-drawer/sofle.yaml
+      - archive/ORIG/boards/shields/lily58/Kconfig.defconfig
+      - archive/ORIG/boards/shields/lily58/Kconfig.shield
+      - archive/keymap-drawer/corne.svg
+      - archive/keymap-drawer/lily58.svg
+
+      Notes:
+      - I restored the ORIG/ files from the previous commit and placed them under `archive/ORIG/` so you keep the historical backups.
+      - I moved `keymap-drawer/*.svg` into `archive/keymap-drawer/` (these are generated assets). The `.gitignore` was updated to ignore `keymap-drawer/*.svg` already; I also added `archive/` and `boards/.DS_Store.gz` to `.gitignore`.
+      - If you want more overlays moved into `archive/boards/` I can run a CI-target analysis and move overlays not referenced by `build.yaml`.
+
       --- End of annotated boards-focused tree
