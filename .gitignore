@@ -87,3 +87,5 @@ target/
 
 # keymap svgs
 keymap-drawer/*.svg
+archive/
+boards/.DS_Store.gz
