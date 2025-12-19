@@ -1,0 +1,12 @@
+title: "ZMK behavior-one-shot binding"
+
+description: "Minimal binding for ZMK one-shot behavior to satisfy DTS parsing in this repo."
+
+properties:
+  layer:
+    description: "Layer index to activate as one-shot"
+    type: integer
+
+required: []
+
+additionalProperties: true
