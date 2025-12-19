@@ -139,12 +139,19 @@
             bindings = <&kp MINUS>, <&bootloader>;
         };
 
-        /* Tap-dance for MO(2) key: hold -> MO(2); double-tap -> sticky Control layer (use &sl) */
+        /* Tap-dance for MO(2) key: hold -> MO(2); double-tap -> sticky Control layer */
+        sl_control: sl_control {
+            compatible = "zmk,behavior-sticky-layer";
+            #binding-cells = <0>;
+            layer = <4>; /* control_layer index */
+            release-after-ms = <3000>;
+        };
+
         td_mo2: td_mo2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <250>;
-            bindings = <&mo 2>, <&sl 4>;
+            bindings = <&mo 2>, <&sl_control>;
         };
     };
 
