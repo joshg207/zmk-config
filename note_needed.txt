@@ -153,3 +153,8 @@ Top level:
       - If you want more overlays moved into `archive/boards/` I can run a CI-target analysis and move overlays not referenced by `build.yaml`.
 
       --- End of annotated boards-focused tree
+
+      Archive status:
+      - The files listed above were moved into `archive/` and are now removed from the Git index (untracked). The files remain on disk under `archive/` but will not be committed in future because `archive/` is in `.gitignore`.
+
+      If you want the archive contents to be versioned again, remove `archive/` from `.gitignore` and `git add` the files. Otherwise they will remain local-only.
