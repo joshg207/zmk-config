@@ -119,7 +119,7 @@
         bspc_del: bspc_del {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            mods = <MOD_LSHIFT | MOD_RSHIFT>;
+            mods = <MOD_LSHIFT MOD_RSHIFT>;
             bindings = <&kp BSPC>, <&kp DEL>;
         };
 
