@@ -113,11 +113,6 @@
         };
     };
 
-    /* Configure default sticky-layer timeout: 3000 ms (3 seconds) */
-    &sl {
-        release-after-ms = <3000>;
-    };
-
     behaviors {
         compatible = "zmk,behaviors";
 
