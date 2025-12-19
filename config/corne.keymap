@@ -113,34 +113,74 @@
         };
     };
 
+    behaviors {
+        compatible = "zmk,behaviors";
+
+        bspc_del: bspc_del {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            mods = <MOD_LSHIFT | MOD_RSHIFT>;
+            bindings = <&kp BSPC>, <&kp DEL>;
+        };
+
+        /* Tap-dance bootloader activators: hold the top-outside key for 20s to enter bootloader */
+        td_boot_left: td_boot_left {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <20000>;
+            bindings = <&kp TAB>, <&bootloader>;
+        };
+
+        td_boot_right: td_boot_right {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <20000>;
+            bindings = <&kp MINUS>, <&bootloader>;
+        };
+
+        /* Tap-dance for MO(2) key: hold -> MO(2); double-tap -> oneshot Control layer */
+        oneshot_control: oneshot_control {
+            compatible = "zmk,behavior-one-shot";
+            #binding-cells = <0>;
+            layer = <4>; /* control_layer index */
+        };
+
+        td_mo2: td_mo2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&mo 2>, <&oneshot_control>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | -_   |
 // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT |
-//                    | ALT | LWR | SPC |   | SPC | RSE  | DEL |
+//                    | ALT | LWR | SPC |   | RET | RSE  |BSDEL|
             bindings = <
-   &kp TAB    &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL  &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT  &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                  &kp LALT &mo 1 &kp SPACE    &kp SPACE &mo 2 &kp DEL
+   &td_boot_left &kp Q &kp W &kp E &kp R   &kp T &kp Y  &kp U     &kp I   &kp O    &kp P    &td_boot_right
+   &kp LCTRL     &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT     &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+                      &kp LALT &mo 1 &kp SPACE    &kp RET &td_mo2 &bspc_del
             >;
         };
 
         lower_layer {
 // -----------------------------------------------------------------------------------------
-// |  1   |  2  |  3  |  ^  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |      |
-// | CTRL |     | <-  |  v  | ->  |     |   |  +  | MB1 | MB2 | MB3 | SCU | BSLH |
-// | SHFT |     |     |     |     |     |   |  _  |  =  |  [  |  ]  | SCD | SHFT |
-//                    | ALT |     | SPC |   | SPC | MO3 | DEL |
+// |  1   |  2  |  3  |  ^  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |  -_  |
+// | CTRL | `~  | <-  |  v  | ->  |     |   | =+  | MB1 | MB2 | MB3 | SCU |  \|  |
+// | SHFT |     |     |     |     |     |   |  \| |     |  [{ |  }] | SCD | SHFT |
+//                    | ALT |     | SPC |   |     | MO3 |BSDEL|
             bindings = <
-   &kp N1     &kp N2       &kp N3          &mmv MOVE_UP    &kp N4       &kp N5         &kp N6    &kp N7    &kp N8    &kp N9     &kp N0         &trans
-   &kp LCTRL  &trans       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans      &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3   &msc SCRL_UP   &kp BSLH
-   &kp LSHFT  &trans       &trans          &trans          &trans       &trans         &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT   &msc SCRL_DOWN &trans
-                                           &kp LALT        &trans       &kp SPACE      &kp SPACE &mo 3     &kp DEL
+   &kp N1     &kp N2       &kp N3          &mmv MOVE_UP    &kp N4          &kp N5         &kp N6    &kp N7      &kp N8    &kp N9     &kp N0         &trans
+   &kp LCTRL  &kp grav       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans         &kp EQUAL &mkp MB1    &mkp MB2  &mkp MB3   &msc SCRL_UP   &kp BSLH
+   &kp LSHFT  &trans       &trans          &trans          &trans          &trans         &kp BSLH  &trans      &kp LBKT  &kp RBKT   &msc SCRL_DOWN &trans
+                                           &kp LALT        &trans          &kp SPACE      &trans    &trans     &bspc_del
             >;
         };
 
@@ -148,41 +188,41 @@
 // -----------------------------------------------------------------------------------------
 // |  ESC | VUP |UNDO |     |C+PSC| COPY|   |     | HOME| UP  | END |     |      |
 // | CTRL | MUTE|REDO |     |PASTE|C+S+V|   |     | LEFT| DOWN|RIGHT|PG_UP|      |
-// | SHFT | VDWN|     |     |     |     |   |     |     |  =  |     |PG_DN| SHFT |
-//                    | ALT | GUI | SPC |   | SPC |     | DEL |
+// | SHFT | VDWN|     |     |     |     |   |     |     |     |     |PG_DN| SHFT |
+//                    | ALT | GUI | SPC |   |     | MO4 |BSDEL|
             bindings = <
    &kp ESC    &kp C_VOL_UP &undo      &trans       &ctrl_prtsc &mcopy    &trans    &kp HOME &kp UP    &kp END   &trans    &trans
-   &kp LCTRL  &kp C_MUTE   &redo       &trans       &mpaste     &csv      &trans    &kp LEFT &kp DOWN  &kp RIGHT &kp PG_UP &trans
-   &kp LSHFT  &kp C_VOL_DN &trans       &trans       &trans      &trans    &trans    &trans   &kp EQUAL &trans    &kp PG_DN &trans
-                                       &kp LALT     &kp LGUI    &kp SPACE &kp SPACE &mo 4    &kp DEL
+   &kp LCTRL  &kp C_MUTE   &redo      &trans       &mpaste     &csv      &trans    &kp LEFT &kp DOWN  &kp RIGHT &kp PG_UP &trans
+   &kp LSHFT  &kp C_VOL_DN &trans     &trans       &trans      &trans    &trans    &trans   &trans    &trans    &kp PG_DN &trans
+                                      &kp LALT     &kp LGUI    &kp SPACE &trans    &trans    &bspc_del
             >;
         };
 
-        function_layer {
+//        function_layer {
 // -----------------------------------------------------------------------------------------
 // |  !   |  @  |  #  |  $  |  %  |  ^  |   |  &  |  *  |  (  |  )  |  -  |  =   |
 // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | ALT |     | SPC |   | SPC |     | DEL |
-            bindings = <
-   &kp EXCL   &kp AT    &kp HASH  &kp DOLLAR &kp PRCNT &kp CARET    &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp MINUS &kp EQUAL
-   &kp LCTRL  &trans    &trans    &trans     &trans    &trans       &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-   &kp LSHFT  &trans    &trans    &trans     &trans    &trans       &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                                  &kp LALT   &trans    &kp SPACE    &kp SPACE &trans    &kp DEL
-            >;
-        };
+//                    | ALT |     | SPC |   |     |     | DEL |
+//            bindings = <
+//   &kp EXCL   &kp AT    &kp HASH  &kp DOLLAR &kp PRCNT &kp CARET    &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp MINUS &kp EQUAL
+//   &kp LCTRL  &trans    &trans    &trans     &trans    &trans       &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+ //  &kp LSHFT  &trans    &trans    &trans     &trans    &trans       &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
+//                                  &kp LALT   &trans    &kp SPACE    &kp SPACE &trans    &bspc_del
+//            >;
+//        };
 
         control_layer {
 // -----------------------------------------------------------------------------------------
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | F1  | F2  | F3  | F4  | F5  | F6   |
 // |SYS_RS|     |     |     |     |     |   | F7  | F8  | F9  | F10 | F11 | F12  |
 // | BOOT |P_ON |P_OFF|P_TOG|     |     |   |     |     |     |     |     | BOOT |
-//                    | ALT |     | SPC |   | SPC |     | DEL |
+//                    | ALT |     | SPC |   |     |     |BSDEL|
             bindings = <
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
-   &sys_reset &trans       &trans       &trans       &trans       &trans          &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-   &bootloader &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans &trans &trans &trans &trans &trans &trans &bootloader
-                                        &kp LALT     &trans       &kp SPACE      &kp SPACE &trans &kp DEL
+   &bt BT_CLR  &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4    &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
+   &sys_reset  &trans           &trans            &trans            &trans       &trans          &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
+   &bootloader &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans          &trans &trans &trans &trans &trans &trans &bootloader
+                                &kp LALT          &trans            &kp SPACE    &trans          &trans &bspc_del
             >;
         };
     };
