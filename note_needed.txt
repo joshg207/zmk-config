@@ -140,6 +140,13 @@ Top level:
       - archive/keymap-drawer/corne.svg
       - archive/keymap-drawer/lily58.svg
 
+      Additional overlays moved into `archive/boards/` (not referenced by build.yaml):
+      - archive/boards/nice_nano.overlay
+      - archive/boards/nrfmicro_11.overlay
+      - archive/boards/nrfmicro_11_flipped.overlay
+      - archive/boards/nrfmicro_13.overlay
+      - archive/boards/puchi_ble_v1.overlay
+
       Notes:
       - I restored the ORIG/ files from the previous commit and placed them under `archive/ORIG/` so you keep the historical backups.
       - I moved `keymap-drawer/*.svg` into `archive/keymap-drawer/` (these are generated assets). The `.gitignore` was updated to ignore `keymap-drawer/*.svg` already; I also added `archive/` and `boards/.DS_Store.gz` to `.gitignore`.
