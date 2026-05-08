@@ -88,7 +88,6 @@ include:
   - board: seeeduino_xiao_ble
     shield: splitkb_aurora_sofle_dongle_xiao dongle_screen
     cmake-args:
-      - -DCONFIG_ZMK_KEYBOARD_NAME=\"Sofle_Dongle\"
       - -DCONFIG_ZMK_STUDIO=y
       - -DCONFIG_ZMK_STUDIO_LOCKING=n
       - -DCONFIG_ZMK_IDLE_TIMEOUT=60000
