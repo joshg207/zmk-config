@@ -12,6 +12,10 @@
 
 
 / {
+    chosen {
+        zmk,underglow = &led_strip;
+    };
+    
     macros {
         win_c: win_c {
             label = "WIN_C";
