@@ -6,12 +6,14 @@ include:
 
 # peripheral_left + nice_nano + nice_epaper
   - board: nice_nano
-    shield: corne_left_peripheral nice_view_adapter nice_epaper
+    #shield: corne_left_peripheral nice_view_adapter nice_epaper
+    shield: corne_left_peripheral nice_view_adapter nice_view    
     artifact-name: nice_corne_left_peripheral_view
 
 # peripheral_left + nice_nano + nice_epaper
   - board: nice_nano
-    shield: corne_right_peripheral nice_view_adapter nice_epaper
+    #dshield: corne_left_peripheral nice_view_adapter nice_epaper
+    shield: corne_right_peripheral nice_view_adapter nice_view
     artifact-name: nice_corne_right_peripheral_view
 
 # Xiao_Dongle START
