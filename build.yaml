@@ -4,13 +4,13 @@ include:
 ### CORNE START ###
 ###################
 
-# peripheral_left + nicenano + nice_epaper
-  - board: nicenano
+# peripheral_left + nice_nano + nice_epaper
+  - board: nice_nano
     shield: corne_left_peripheral nice_view_adapter nice_epaper
     artifact-name: nice_corne_left_peripheral_view
 
-# peripheral_left + nicenano + nice_epaper
-  - board: nicenano
+# peripheral_left + nice_nano + nice_epaper
+  - board: nice_nano
     shield: corne_right_peripheral nice_view_adapter nice_epaper
     artifact-name: nice_corne_right_peripheral_view
 
@@ -37,13 +37,13 @@ include:
 ####################
 
   # peripheral_right
-  - board: nicenano
+  - board: nice_nano
     shield: lily58_right_peripheral
     cmake-args: -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_TIMEOUT=60000
     artifact-name: nice_lily58_right_peripheral
 
   # peripheral_left
-  - board: nicenano
+  - board: nice_nano
     shield: lily58_left_peripheral
     cmake-args: -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_TIMEOUT=60000
     artifact-name: nice_lily58_left_peripheral
@@ -73,13 +73,13 @@ include:
 ############################
 
   # peripheral_right
-  - board: nicenano
+  - board: nice_nano
     shield: splitkb_aurora_sofle_right oled_adapter_pro_micro_128x32
     cmake-args: -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_TIMEOUT=60000 -DCONFIG_ZMK_RGB_UNDERGLOW=y -DCONFIG_ZMK_DISPLAY=y -DCONFIG_EC11=y -DCONFIG_EC11_TRIGGER_GLOBAL_THREAD=y -DCONFIG_ZMK_HID_CONSUMER_REPORT_USAGES_BASIC=y
     artifact-name: nice_sofle_right
 
   # peripheral_left
-  - board: nicenano
+  - board: nice_nano
     shield: splitkb_aurora_sofle_left_peripheral oled_adapter_pro_micro_128x32
     cmake-args: -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_TIMEOUT=60000 -DCONFIG_ZMK_RGB_UNDERGLOW=y -DCONFIG_ZMK_DISPLAY=y -DCONFIG_EC11=y -DCONFIG_EC11_TRIGGER_GLOBAL_THREAD=y -DCONFIG_ZMK_HID_CONSUMER_REPORT_USAGES_BASIC=y
     artifact-name: nice_sofle_left_peripheral
@@ -122,7 +122,7 @@ include:
 ### SETTINGS_RESET START ###
 ############################
 
-  - board: nicenano
+  - board: nice_nano
     shield: settings_reset
     artifact-name: nice_settings_reset
 
