@@ -15,8 +15,8 @@ manifest:
     #- name: carrefinho
     #  url-base: https://github.com/carrefinho
     # Prospector_scanner
-    - name: janpfischer
-      url-base: https://github.com/janpfischer
+    #- name: janpfischer
+    #  url-base: https://github.com/janpfischer
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -27,9 +27,9 @@ manifest:
     #  remote: englmaxi
     #  revision: main
     # Diff Prospector Dongle
-    - name: zmk-dongle-screen
-      remote: janpfischer
-      revision: main
+    #- name: zmk-dongle-screen
+    #  remote: janpfischer
+    #  revision: main
     # nice_oled - nice_epaper
     - name: zmk-nice-oled
       remote: mctechnology17
