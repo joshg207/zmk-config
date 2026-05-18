@@ -36,82 +36,82 @@
         };
 
         csc: csc {
-        label = "CSC";
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LCTRL &kp LSHIFT>
-            , <&macro_tap &kp C>
-            , <&macro_release &kp LSHIFT &kp LCTRL>
-            ;
+            label = "CSC";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL &kp LSHIFT>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LSHIFT &kp LCTRL>
+                ;
         };
 
         csv: csv {
-        label = "CSV";
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LCTRL &kp LSHIFT>
-            , <&macro_tap &kp V>
-            , <&macro_release &kp LSHIFT &kp LCTRL>
-            ;
+            label = "CSV";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL &kp LSHIFT>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LSHIFT &kp LCTRL>
+                ;
         };
         
         mcopy: mcopy {
-        label = "mcopy";
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LCTRL>
-            , <&macro_tap &kp C>
-            , <&macro_release &kp LCTRL>
-            ;
+            label = "mcopy";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LCTRL>
+                ;
         };
 
         mpaste: mpaste {
-        label = "mpaste";
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LCTRL>
-            , <&macro_tap &kp V>
-            , <&macro_release &kp LCTRL>
-            ;
+            label = "mpaste";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LCTRL>
+                ;
         };
 
         undo: undo {
-        label = "undo";
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LCTRL>
-            , <&macro_tap &kp Z>
-            , <&macro_release &kp LCTRL>
-            ;
+            label = "undo";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Z>
+                , <&macro_release &kp LCTRL>
+                ;
         };
 
         redo: redo {
-        label = "redo";
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LCTRL>
-            , <&macro_tap &kp Y>
-            , <&macro_release &kp LCTRL>
-            ;
+            label = "redo";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp Y>
+                , <&macro_release &kp LCTRL>
+                ;
         };
 
         ptrun: ptrun {
-        label = "ptrun";
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LWIN>
-            , <&macro_press &kp LALT>
-            , <&macro_tap &kp SPACE>
-            , <&macro_release &kp LWIN>
-            , <&macro_release &kp LALT>
-            ;
+            label = "ptrun";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LWIN>
+                , <&macro_press &kp LALT>
+                , <&macro_tap &kp SPACE>
+                , <&macro_release &kp LWIN>
+                , <&macro_release &kp LALT>
+                ;
         };
     };
 
@@ -158,7 +158,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        desfault_layer {
+        default_layer {
             display-name="Default";
 // ------------------------------------------------------------------------------------------------------------
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
