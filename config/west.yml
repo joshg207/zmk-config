@@ -8,12 +8,13 @@ manifest:
     # nice_oled - nice_epaper - dongle_display!view - oled Adapter
     - name: mctechnology17
       url-base: https://github.com/mctechnology17
-    # Prospector Dongle
-    - name: carrefinho
-      url-base: https://github.com/carrefinho
     # Prospector_scanner
     - name: prospector
       url-base: https://github.com/t-ogura
+    # Prospector Dongle
+    #- name: carrefinho
+    #  url-base: https://github.com/carrefinho
+    # Prospector_scanner
     - name: janpfischer
       url-base: https://github.com/janpfischer
   projects:

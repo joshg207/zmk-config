@@ -111,7 +111,7 @@ include:
   #- board: xiao_ble/nrf52840/zmk
   - board: seeeduino_xiao_ble
     shield: prospector_scanner
-    cmake-args: -DEXTRA_CONF_FILE=./config/prospector_scanner_touch.conf
+    cmake-args: -DEXTRA_CONF_FILE="$(pwd)/config/prospector_scanner_touch.conf"
     artifact-name: prospector_scanner_touch
 ##############################
 ### Prospector_Scanner End ###
