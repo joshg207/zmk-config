@@ -11,6 +11,9 @@ manifest:
     # Prospector Dongle
     - name: carrefinho
       url-base: https://github.com/carrefinho
+    # Prospector_scanner
+    - name: prospector
+      url-base: https://github.com/t-ogura
     - name: janpfischer
       url-base: https://github.com/janpfischer
   projects:
@@ -39,8 +42,12 @@ manifest:
       remote: mctechnology17
       revision: main
     # prospector adapter
+    #- name: prospector-zmk-module
+    #  remote: carrefinho
+    #  revision: main
     - name: prospector-zmk-module
-      remote: carrefinho
-      revision: main
+      remote: prospector
+      revision: v2.2.1
+      path: modules/prospector-zmk-module
   self:
     path: config

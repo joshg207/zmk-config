@@ -49,20 +49,20 @@ include:
     artifact-name: nice_lily58_left_peripheral
 
 # Xiao_Dongle_Prospector
-  - board: seeeduino_xiao_ble
+#  - board: seeeduino_xiao_ble
 #    shield: lily58_dongle_xiao prospector_adapter
-    shield: lily58_dongle_xiao dongle_screen
-    cmake-args: 
-      #- -DCONFIG_ZMK_KEYBOARD_NAME=\"lily58Dongle_X\" 
-      - -DCONFIG_ZMK_STUDIO=y
-      - -DCONFIG_ZMK_STUDIO_LOCKING=n
-      - -DCONFIG_ZMK_IDLE_TIMEOUT=60000
-      #- -DCONFIG_LV_COLOR_DEPTH=16
-      #- -DCONFIG_LV_COLOR_DEPTH_16=y
-      #- -DCONFIG_LV_COLOR_DEPTH_1=n
-      #- -DCONFIG_LV_COLOR_16_SWAP=n
-    artifact-name: xiao_lily58_dongle_xiao
-    snippet: studio-rpc-usb-uart
+#    shield: lily58_dongle_xiao dongle_screen
+#    cmake-args: 
+#      #- -DCONFIG_ZMK_KEYBOARD_NAME=\"lily58Dongle_X\" 
+#      - -DCONFIG_ZMK_STUDIO=y
+#      - -DCONFIG_ZMK_STUDIO_LOCKING=n
+#      - -DCONFIG_ZMK_IDLE_TIMEOUT=60000
+#      #- -DCONFIG_LV_COLOR_DEPTH=16
+#      #- -DCONFIG_LV_COLOR_DEPTH_16=y
+#      #- -DCONFIG_LV_COLOR_DEPTH_1=n
+#      #- -DCONFIG_LV_COLOR_16_SWAP=n
+#    artifact-name: xiao_lily58_dongle_xiao
+#    snippet: studio-rpc-usb-uart
 
 ##################
 ### LILY58 END ###
@@ -74,29 +74,49 @@ include:
 
   # peripheral_right
   - board: nice_nano_v2
-    shield: splitkb_aurora_sofle_right
+    shield: splitkb_aurora_sofle_right oled_adapter_pro_micro_128x32
     cmake-args: -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_TIMEOUT=60000 -DCONFIG_ZMK_RGB_UNDERGLOW=y -DCONFIG_ZMK_DISPLAY=y -DCONFIG_EC11=y -DCONFIG_EC11_TRIGGER_GLOBAL_THREAD=y -DCONFIG_ZMK_HID_CONSUMER_REPORT_USAGES_BASIC=y
     artifact-name: nice_sofle_right
 
   # peripheral_left
   - board: nice_nano_v2
-    shield: splitkb_aurora_sofle_left_peripheral
+    shield: splitkb_aurora_sofle_left_peripheral oled_adapter_pro_micro_128x32
     cmake-args: -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_TIMEOUT=60000 -DCONFIG_ZMK_RGB_UNDERGLOW=y -DCONFIG_ZMK_DISPLAY=y -DCONFIG_EC11=y -DCONFIG_EC11_TRIGGER_GLOBAL_THREAD=y -DCONFIG_ZMK_HID_CONSUMER_REPORT_USAGES_BASIC=y
     artifact-name: nice_sofle_left_peripheral
 
   # Xiao_Dongle
-  - board: seeeduino_xiao_ble
-    shield: splitkb_aurora_sofle_dongle_xiao dongle_screen
-    cmake-args:
-      - -DCONFIG_ZMK_STUDIO=y
-      - -DCONFIG_ZMK_STUDIO_LOCKING=n
-      - -DCONFIG_ZMK_IDLE_TIMEOUT=60000
-    artifact-name: xiao_sofle_dongle
-    snippet: studio-rpc-usb-uart
+  #- board: seeeduino_xiao_ble
+  #  shield: splitkb_aurora_sofle_dongle_xiao dongle_screen
+  #  cmake-args:
+  #    - -DCONFIG_ZMK_STUDIO=y
+  #    - -DCONFIG_ZMK_STUDIO_LOCKING=n
+  #    - -DCONFIG_ZMK_IDLE_TIMEOUT=60000
+  #  artifact-name: xiao_sofle_dongle
+  #  snippet: studio-rpc-usb-uart
 
-####################
+########################
 ### AURORA SOFLE END ###
-####################
+########################
+
+################################
+### Prospector_Scanner Start ###
+################################
+  # Scanner - Non-Touch Mode (display only, no swipe navigation)
+  #- board: xiao_ble/nrf52840/zmk
+  - board: seeeduino_xiao_ble
+    shield: prospector_scanner
+    artifact-name: prospector_scanner
+
+  # Scanner - Touch Mode (swipe navigation + settings screens)
+  #- board: xiao_ble/nrf52840/zmk
+  - board: seeeduino_xiao_ble
+    shield: prospector_scanner
+    cmake-args: -DEXTRA_CONF_FILE=./config/prospector_scanner_touch.conf
+    artifact-name: prospector_scanner_touch
+##############################
+### Prospector_Scanner End ###
+##############################
+
 
 ############################
 ### SETTINGS_RESET START ###
