@@ -2,6 +2,9 @@
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
+ *    chosen {
+ *        zmk,underglow = &led_strip;
+ *   };
  */
 
 #include <behaviors.dtsi>
@@ -12,10 +15,7 @@
 
 
 / {
-    chosen {
-        zmk,underglow = &led_strip;
-    };
-    
+
     macros {
         win_c: win_c {
             label = "WIN_C";
