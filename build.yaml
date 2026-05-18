@@ -78,11 +78,15 @@ include:
   - board: nice_nano
     shield: splitkb_aurora_sofle_right
     artifact-name: nice_sofle_right
+    cmake-args: >-
+      -DEXTRA_DTC_OVERLAY_FILE=/__w/zmk-config/zmk-config/boards/shields/splitkb_aurora_sofle/boards/nice_nano_nrf52840_zmk.overlay
 
   # peripheral_left
   - board: nice_nano
     shield: splitkb_aurora_sofle_left
     artifact-name: nice_sofle_left_peripheral
+    cmake-args: >-
+      -DEXTRA_DTC_OVERLAY_FILE=/__w/zmk-config/zmk-config/boards/shields/splitkb_aurora_sofle/boards/nice_nano_nrf52840_zmk.overlay
 
   # Xiao_Dongle
   #- board: seeeduino_xiao_ble
