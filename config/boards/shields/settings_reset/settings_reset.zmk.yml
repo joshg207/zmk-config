@@ -1,7 +1,0 @@
-file_format: "1"
-id: settings_reset
-name: Settings Reset
-type: shield
-requires: []
-features:
-  - reset
