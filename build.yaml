@@ -37,11 +37,11 @@ include:
       - -DCONFIG_ZMK_IDLE_TIMEOUT=60000
 
   # ============ Aurora Sofle Split Keyboard ============
-  - board: nice_nano
+  - board: nice_nano@2
     shield: splitkb_aurora_sofle_left
     artifact-name: sofle_left
 
-  - board: nice_nano
+  - board: nice_nano@2
     shield: splitkb_aurora_sofle_right
     artifact-name: sofle_right
 
