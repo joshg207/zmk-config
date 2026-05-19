@@ -1,53 +1,120 @@
-# MC Technology's zmk-config for corne - sofle - lily58
+# ZMK Keyboard Configuration
 
-[![MC Technology](https://github.com/mctechnology17/mctechnology17/blob/main/src/mctechnology_extendido.GIF)](https://www.youtube.com/channel/UC_mYh5PYPHBJ5YYUj8AIkcw)
+Modern, maintainable ZMK firmware configuration for split and specialty keyboards.
 
-<div align="center">
+## Supported Keyboards
 
-  [<img align="center" alt="MC Technology | YouTube" width="22px" src="https://github.com/mctechnology17/mctechnology17/blob/main/src/youtube.png" />][youtube]
-  [<img align="center" alt="MC Technology17 | Facebook" width="22px" src="https://github.com/mctechnology17/mctechnology17/blob/main/src/facebook.png" />][facebook]
-  [<img align="center" alt="MC Technology17 | Reddit" width="22px" src="https://github.com/mctechnology17/mctechnology17/blob/main/src/reddit.png" />][reddit]
+- **Corne** – Split ortholinear keyboard with nice!view display support
+- **Lily58** – Split staggered keyboard
+- **Aurora Sofle** – Split ortholinear keyboard with RGB support
+- **Prospector Scanner** – Specialty keyboard with touch display
+- **Wireless Dongles** – Seeeduino XIAO BLE dongles for wireless operation
 
-</div>
-<br>
+## Quick Start
 
+### Prerequisites
 
-- [INTRO](#INTRO)
-- [QUICK START](#QUICK-START)
-  - [keymap corne](#keymap-corne)
-  - [keymap sofle](#keymap-sofle)
-  - [keymap splitkb_aurora_sofle](#keymap-splitkb_aurora_sofle)
-  - [keymap lily58](#keymap-lily58)
-- [LOCAL INSTALLATION](#LOCAL-INSTALLATION)
-- [DISPLAY](#DISPLAY)
-- [RGB](#RGB)
-  - [rgb with niceview](#rgb-with-niceview)
-  - [rgb with niceview in two step](#rgb-with-niceview-in-two-step)
-- [DONGLE](#DONGLE)
-- [USEFUL TIPS](#USEFUL-TIPS)
-- [ZMK STUDIO](#ZMK-STUDIO)
-- [MODULE INTEGRATION](#MODULE-INTEGRATION)
-   - [modules used in this repository](#modules-used-in-this-repository)
-   - [list of useful modules](#list-of-useful-modules)
-- [THIS REPOSITORY AS A MODULE](#THIS-REPOSITORY-AS-A-MODULE)
-- [INSPIRATIONS](#INSPIRATIONS)
-- [MY OTHER PROJECTS](#MY-OTHER-PROJECTS)
-- [RELATED PROJECTS](#RELATED-PROJECTS)
-- [DONGLE DESIGNS](#DONGLE-DESIGNS)
+- [ZMK CLI](https://docs.zephyrproject.org/latest/develop/tools/west/index.html) or [GitHub Actions](https://github.com/features/actions)
+- West configured and up to date
 
-----
+### Building Firmware
 
-- If you already have your corne - sofle - lily58 configured with this repository and want to make
-a modification to your keymap, you can do it with the online [ZMK-STUDIO](https://zmk.studio/).
+The build configuration is defined in `build.yaml`. All available build targets are organized by keyboard:
 
-- If you already have your corne - sofle - lily58 configured with this repository and want to make
-a modification to your keymap, you can do it with the online [keymap-editor](https://nickcoutsos.github.io/keymap-editor/).
+**For local builds:**
+```bash
+west build -b nice_nano -d build/corne_left -- -DSHIELD=corne_left_peripheral
+west build -b nice_nano -d build/corne_right -- -DSHIELD=corne_right_peripheral
+```
 
-- If you already have a repository and you want only the dongle option of this repository with support for `zmk-studio`, just add this repository as a module to your configuration, look the section [THIS REPOSITORY AS A MODULE](#THIS-REPOSITORY-AS-A-MODULE).
+**Recommended: Use GitHub Actions** – Push to your fork and let GitHub build all firmware variants automatically.
 
-# INTRO
+## Repository Structure
 
-> [!CAUTION]
+```
+config/
+├── *.conf                      # Keyboard-specific configuration files
+├── *.keymap                    # ZMK keymap definitions
+└── west.yml                    # Module manifest
+
+boards/
+├── *.overlay                   # Board-specific device tree overlays
+└── shields/
+    ├── corne/                  # Corne shield configurations
+    ├── lily58/                 # Lily58 shield configurations
+    ├── splitkb_aurora_sofle/   # Aurora Sofle configurations
+    ├── prospector_scanner/     # Prospector scanner configurations
+    └── settings_reset/         # Utility shield for resetting keyboard settings
+
+build.yaml                      # CI/CD build matrix configuration
+```
+
+## Configuration
+
+### Editing Keymaps
+
+**Option 1: ZMK Studio (Recommended)**
+- Visit [ZMK Studio](https://zmk.studio/)
+- Point to your GitHub repository
+- Edit keymaps visually and deploy
+
+**Option 2: Direct Editing**
+- Edit `.keymap` files in `config/`
+- Edit keyboard features in `.conf` files
+- Commit and push to trigger GitHub Actions build
+
+### Adding New Keyboards
+
+1. Create shield directory in `boards/shields/{keyboard_name}/`
+2. Add `.keymap`, `.conf`, and `.dtsi` files
+3. Add build entries to `build.yaml`
+4. Update `config/west.yml` if using external modules
+
+## Dependencies & Modules
+
+This configuration uses the following ZMK modules for enhanced functionality:
+
+- `zmk-nice-oled` – OLED display support
+- `zmk-dongle-display-view` – Wireless dongle display integration
+- `zmk-oled-adapter` – Display adapter for various shields
+- `prospector-zmk-module` – Prospector scanner keyboard support
+
+See `config/west.yml` for the complete manifest.
+
+## GitHub Actions CI/CD
+
+Firmware builds are automatically triggered on every push. Built firmware files are available as artifacts.
+
+To enable builds in your fork:
+1. Ensure GitHub Actions is enabled
+2. Push changes to your repository
+3. Check the "Actions" tab for build status
+
+## Tips & Troubleshooting
+
+### Clean Build
+```bash
+west build --pristine always -b nice_nano -- -DSHIELD=corne_left_peripheral
+```
+
+### View Build Logs
+GitHub Actions logs are available in your repository's Actions tab.
+
+### ZMK Studio
+
+For visual keymap editing without coding:
+1. Visit https://zmk.studio/
+2. Select "GitHub Repository Configuration"
+3. Authorize and select this repository
+4. Edit keymaps and deploy directly
+
+## Contributing
+
+Pull requests and issues welcome! When adding new keyboards or features:
+- Keep configuration files organized and documented
+- Update `build.yaml` with new build targets
+- Test locally before pushing
+- Update this README with any major changes
 >
 > I AM NOT RESPONSIBLE FOR ANY DAMAGE THIS CODE MAY CAUSE, USE IT AT YOUR OWN
 > RISK.

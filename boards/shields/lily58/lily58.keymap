@@ -8,63 +8,252 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/pointing.h>
+
 
 / {
+    macros {
+        win_c: win_c {
+            label = "WIN_C";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LGUI>
+                ;
+        };
+
+        ctrl_prtsc: ctrl_prtsc {
+            label = "CTRL_PRSC";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp PRINTSCREEN>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+        csc: csc {
+        label = "CSC";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHIFT>
+            , <&macro_tap &kp C>
+            , <&macro_release &kp LSHIFT &kp LCTRL>
+            ;
+        };
+
+        csv: csv {
+        label = "CSV";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHIFT>
+            , <&macro_tap &kp V>
+            , <&macro_release &kp LSHIFT &kp LCTRL>
+            ;
+        };
+        
+        mcopy: mcopy {
+        label = "mcopy";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL>
+            , <&macro_tap &kp C>
+            , <&macro_release &kp LCTRL>
+            ;
+        };
+
+        mpaste: mpaste {
+        label = "mpaste";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL>
+            , <&macro_tap &kp V>
+            , <&macro_release &kp LCTRL>
+            ;
+        };
+
+        undo: undo {
+        label = "undo";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL>
+            , <&macro_tap &kp Z>
+            , <&macro_release &kp LCTRL>
+            ;
+        };
+
+        redo: redo {
+        label = "redo";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LCTRL>
+            , <&macro_tap &kp Y>
+            , <&macro_release &kp LCTRL>
+            ;
+        };
+
+        ptrun: ptrun {
+        label = "ptrun";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp LWIN>
+            , <&macro_press &kp LALT>
+            , <&macro_tap &kp SPACE>
+            , <&macro_release &kp LWIN>
+            , <&macro_release &kp LALT>
+            ;
+        };
+    };
+
+
+    behaviors {
+        compatible = "zmk,behaviors";
+
+      td_shift: tap_dance_shift {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp LSHIFT>, <&kp CLCK>;
+    };
+    /* Hold LCTRL for the slower variant */
+    sniper_up: sniper_up {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(-900)>;
+    };
+
+    sniper_down: sniper_down {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_Y(900)>;
+    };
+
+    sniper_left: sniper_left {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_X(-900)>;
+    };
+
+    sniper_right: sniper_right {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      mods = <MOD_LCTL>;
+      bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(900)>;
+    };
+  };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
+            display-name="Default";
 // ------------------------------------------------------------------------------------------------------------
 // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
 // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
 // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-//                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   |  ptrun   |   \|   |  N   |  M    |  ,    |  .   |   /   | SHIFT |
+//                     | GUI  | LALT | LOWER|  SPACE   |  ENTER | RAISE| BSPC  | DEL   |
             bindings = <
 &kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
 &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                      &kp Y  &kp U    &kp I     &kp O   &kp P    &kp MINUS
 &kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                      &kp H  &kp J    &kp K     &kp L   &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B  &kp LBKT   &kp RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                        &kp LALT &kp LGUI &mo 1  &kp SPACE  &kp RET  &mo 2  &kp BSPC &kp RGUI
+&td_shift &kp Z  &kp X  &kp C    &kp V    &kp B  &ptrun     &kp BSLH &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+                        &kp LGUI &kp LALT &mo 1  &kp SPACE  &kp RET  &mo 2  &kp BSPC &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         lower_layer {
+            display-name = "MOUSE,F#,SYMBOLS";
 // ------------------------------------------------------------------------------------------------------------
-// | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
 // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
-// |   `   |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   ~   |
-// |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
-//                     |      |      |      |        |  |       |      |       |       |
+// |   `   |  !  |  @  |   ^  |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   =   |
+// |       |win+c|  <- |   v  |  ->  |      |                   |  +   |  mb1  |  mb2  |  mb3 | scrlu |  \|   |
+// | SHIFT |     |     |  #   |  INS |      |  mo 3  |  |       |  _   |       |  "[{" | "]}" | scrld | SHIFT |
+//                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | DEL   |
             bindings = <
-&bt BT_CLR &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4                 &trans    &trans    &trans    &trans    &trans    &trans
-&kp F1     &kp F2           &kp F3            &kp F4            &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp EXCL         &kp AT            &kp HASH          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp TILDE
-&trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans    &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE
-                                              &trans            &trans       &trans    &trans   &trans    &trans    &trans    &trans
+&kp F1     &kp F2    &kp F3              &kp F4              &kp F5               &kp F6                         &kp F7    &kp F8    &kp F9    &kp F10   &kp F11        &kp F12
+&kp GRAVE  &kp EXCL  &kp AT              &sniper_up          &kp DOLLAR           &kp PRCNT                      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR       &kp EQUAL
+&kp LCTRL  &win_c    &sniper_left        &sniper_down        &sniper_right        &trans                         &kp PLUS  &mkp MB1  &mkp MB2  &mkp MB3  &msc SCRL_UP   &kp BSLH
+&trans     &trans    &trans              &kp HASH            &kp INS              &trans     &mo 3     &trans    &kp MINUS &trans    &kp LBKT  &kp RBKT  &msc SCRL_DOWN &trans
+                                         &trans              &trans               &trans     &trans    &trans    &trans    &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_layer {
+            display-name = "MEDIA,TEXT MGMT,ARROWS";
 // ------------------------------------------------------------------------------------------------------------
-// |       |     |     |      |      |      |                   |      |       |       |      |       |       |
-// |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
-// |   F1  |  F2 |  F3 |  F4  |  F5  |  F6  |                   |      |   <-  |   v   |  ^   |  ->   |       |
-// |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
-//                     |      |      |      |        |  |       |      |       |       |
+// |  mute | vup |vdwn |      |      |      |                   |      |       |       |      |       |       |
+// |   `   |     |UNDO | c-ps | COPY | C+S+C|                   |      |  HOME |   ^   |  END |       |       |
+// |       |     |REDO |      | PASTE| C+S+V|                   |      |   <-  |   v   |  ->  | pg_up |  \|   |
+// | SHIFT |     |     |      |      |      |        |  |  mo 4 |      |       |   =   |      | pg_dn | SHIFT |
+//                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | DEL   |
             bindings = <
-&trans    &trans &trans &trans  &trans  &trans                       &trans      &trans    &trans    &trans   &trans    &trans
-&kp GRAVE &kp N1 &kp N2 &kp N3  &kp N4  &kp N5                       &kp N6      &kp N7    &kp N8    &kp N9   &kp N0    &trans
-&kp F1    &kp F2 &kp F3 &kp F4  &kp F5  &kp F6                       &trans      &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT &trans
-&kp F7    &kp F8 &kp F9 &kp F10 &kp F11 &kp F12   &trans   &trans    &kp KP_PLUS &kp MINUS &kp EQUAL &kp LBKT &kp RBKT  &kp BSLH
-                        &trans  &trans  &trans    &trans   &trans    &trans      &trans    &trans
+&kp C_MUTE &kp C_VOL_DN  &kp C_VOL_UP &trans       &trans      &trans                        &kp F13     &kp F14   &kp F15   &kp F16    &kp F17    &kp F18
+&kp GRAVE  &trans        &undo        &ctrl_prtsc  &mcopy      &csc                          &trans      &kp HOME  &kp UP    &kp END    &trans     &trans
+&trans     &trans        &redo        &trans       &mpaste     &csv                          &trans      &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_UP  &kp BSLH
+&trans     &trans        &trans       &trans       &trans      &trans    &trans   &mo 4      &trans      &trans    &trans    &trans     &kp PG_DN  &trans
+                         &trans       &trans       &trans      &trans    &trans   &trans     &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
+
+        numpad_layer {
+            display-name = "NUMPAD,EXT POWER,KEYPAD";
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   |      |   7   |   8   |  9   |   /   |       |
+// |       |     |     |      |      |      |                   |      |   4   |   5   |  6   |   *   |       |
+// |       |     |     |      |      |      |                   |      |   1   |   2   |  3   |   +   |       |
+// |       |p-on |p-off| p-tog|      |      |        |  |       |      |   0   |   .   |  .   |   -   |       |
+//                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | DEL   |
+            bindings = <
+&trans     &trans           &trans            &trans            &trans       &trans                       &trans    &kp N7    &kp N8     &kp N9    &kp FSLH     &trans
+&trans     &trans           &trans            &trans            &trans       &trans                       &trans    &kp N4    &kp N5     &kp N6    &kp ASTRK    &trans
+&trans     &trans           &trans            &trans            &trans       &trans                       &trans    &kp N1    &kp N2     &kp N3    &kp PLUS     &trans
+&trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans   &trans    &trans    &trans    &kp N0    &kp DOT    &kp DOT   &kp MINUS    &trans
+                                              &trans            &trans       &trans   &trans    &trans    &trans    &trans    &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        control_layer {
+            display-name = "CONTROL,BOOTLOADER,RESET";
+// ------------------------------------------------------------------------------------------------------------
+// | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5   |                   |      |       |       |      |       |       |
+// |       |     |     |      |      |dongleup|                   |      |       |       |      |       |       |
+// |sys-res|     |     |      |      |dongled |                   |      |       |       |      |       |       |
+// | Bload |p-on |p-off| p-tog|      |        |        |  |       |      |       |       |      |       | Bload |
+//                     | ALT  | GUI  | LOWER  |  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
+            bindings = <
+&bt BT_CLR  &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4               &trans    &trans   &trans    &trans    &trans    &trans
+&trans      &trans           &trans            &trans            &trans       &kp F24                    &trans    &trans   &trans    &trans    &trans    &trans
+&sys_reset  &trans           &trans            &trans            &trans       &kp F23                    &trans    &trans   &trans    &trans    &trans    &trans
+&bootloader &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans   &trans   &trans   &trans    &trans   &trans    &trans    &trans    &bootloader
+                             &trans            &trans            &trans       &trans   &trans   &trans   &trans    &trans
+            >;
+ 
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
     };
 };
+
+// |       |     |     |      |      |      |                   |      |       |       |      |       |       |
+// &trans     &trans           &trans            &trans            &trans       &trans    &trans    &trans   &trans    &trans    &trans    &trans

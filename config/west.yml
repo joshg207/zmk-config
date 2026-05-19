@@ -2,53 +2,35 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # dongle_display
-    - name: englmaxi
-      url-base: https://github.com/englmaxi
-    # nice_oled - nice_epaper - dongle_display!view - oled Adapter
     - name: mctechnology17
       url-base: https://github.com/mctechnology17
-    # Prospector_scanner
     - name: prospector
       url-base: https://github.com/t-ogura
-    # Prospector Dongle
-    #- name: carrefinho
-    #  url-base: https://github.com/carrefinho
-    # Prospector_scanner
-    #- name: janpfischer
-    #  url-base: https://github.com/janpfischer
+
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    # dongle_display
-    #- name: zmk-dongle-display
-    #  remote: englmaxi
-    #  revision: main
-    # Diff Prospector Dongle
-    #- name: zmk-dongle-screen
-    #  remote: janpfischer
-    #  revision: main
-    # nice_oled - nice_epaper
+
+    # Display & IO modules
     - name: zmk-nice-oled
       remote: mctechnology17
       revision: main
-    # dongle_display!view
+
     - name: zmk-dongle-display-view
       remote: mctechnology17
       revision: main
-    # oled Adapter
+
     - name: zmk-oled-adapter
       remote: mctechnology17
       revision: main
-    # prospector adapter
-    #- name: prospector-zmk-module
-    #  remote: carrefinho
-    #  revision: main
+
+    # Keyboard-specific modules
     - name: prospector-zmk-module
       remote: prospector
       revision: v2.2.1
       path: modules/prospector-zmk-module
+
   self:
     path: config

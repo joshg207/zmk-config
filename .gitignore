@@ -1,53 +1,36 @@
-# zmk
+# ZMK Build Output
 zmk/
+build/
+.cmake/
+*.hex
+*.uf2
 
-# sketchybar
-sketchybar/dotfiles/
-sketchybar/dotfiles
-sketchybar/dotfiles/*
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# MacOS
+# OS-specific
 .DS_Store
-vim-tools_notiz.vim
-.DS_Store
-./*/.DS_Store
-.vscode
-# .vimspector.json
-push.sh
-/test
-test/
-
-# c, cpp
-*.x
-*.d
-*.dSYM
-*.o
-*.out
-
-# log
-*.log
-
-# cache
-*.cache
-cache/
-
-# Windows
 Thumbs.db
 Desktop.ini
 
-# Tags
-#TAGS
-#!TAGS/
-#tags
-doc/tags
-tags-cn
-!tags/
-.tags
-.tags1
-tags.lock
-tags.temp
-gtags.files
-GTAGS
+# Backup & Temporary Files
+*.bak
+*.old
+*.tmp
+*copy*
+*.backup
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+venv/
+__pycache__/
 GRTAGS
 GPATH
 cscope.files
