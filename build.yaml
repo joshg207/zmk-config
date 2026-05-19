@@ -1,11 +1,11 @@
 ---
 include:
   # ============ Corne Split Keyboard ============
-  - board: nice_nano
+  - board: nice_nano@2
     shield: corne_left_peripheral nice_view_adapter nice_view
     artifact-name: corne_left
 
-  - board: nice_nano
+  - board: nice_nano@2
     shield: corne_right_peripheral nice_view_adapter nice_view
     artifact-name: corne_right
 
