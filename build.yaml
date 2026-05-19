@@ -1,15 +1,15 @@
 ---
 include:
   # ============ Corne Split Keyboard ============
-  - board: nice_nano@2
+  - board: nice_nano/nrf52840/zmk
     shield: corne_left_peripheral nice_view_adapter nice_view
     artifact-name: corne_left
 
-  - board: nice_nano@2
+  - board: nice_nano/nrf52840/zmk
     shield: corne_right_peripheral nice_view_adapter nice_view
     artifact-name: corne_right
 
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble/nrf52840/zmk
     shield: corne_dongle_xiao
     artifact-name: corne_dongle
     cmake-args:
@@ -22,14 +22,14 @@ include:
     snippet: studio-rpc-usb-uart
 
   # ============ Lily58 Split Keyboard ============
-  - board: nice_nano
+  - board: nice_nano/nrf52840/zmk
     shield: lily58_left_peripheral
     artifact-name: lily58_left
     cmake-args:
       - -DCONFIG_ZMK_SLEEP=y
       - -DCONFIG_ZMK_IDLE_TIMEOUT=60000
 
-  - board: nice_nano
+  - board: nice_nano/nrf52840/zmk
     shield: lily58_right_peripheral
     artifact-name: lily58_right
     cmake-args:
